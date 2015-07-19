@@ -1,0 +1,134 @@
+<html>
+<head><title>MathGame</title>
+<style>
+
+</style>
+<script>
+var intcorrect=0, intincorrect=0;
+function SetUpGame() {
+						var oper, num1, num2, num3;
+						
+						if (document.MathGame.radDifficulty[0].checked) 
+						{ 
+							num1 = 1 + Math.floor(Math.random() * 10);
+							num2 = 1 + Math.floor(Math.random() * 10);
+						}
+						else 
+						{
+							num1 = Math.floor(Math.random() * 91) + 10;
+							num2 = Math.floor(Math.random() * 91) + 10;
+						}
+
+						if (document.MathGame.radOperation[0].checked) oper="+";
+						else if	(document.MathGame.radOperation[1].checked) 
+						{
+							oper="-";
+							if (num2 > num1) 
+							{
+							num3 = num1;
+							num1 = num2;
+							num2 = num3;
+							}
+						}
+						else if	(document.MathGame.radOperation[2].checked) 
+						{
+						oper="*";
+						}
+						else if (document.MathGame.radOperation[3].checked) 
+						{
+						oper="/";
+						num3 = num1 * num2;
+						num1 = num3;
+						}
+
+						document.MathGame.txta.value = num1;
+						document.MathGame.txtb.value = num2;
+						document.getElementById("operator").innerText = oper;
+					}
+
+					function CheckIt()
+					{
+						var num1 = parseInt(document.MathGame.txta.value);
+						var num2 = parseInt(document.MathGame.txtb.value);
+						var intguess = parseInt(document.MathGame.txtguess.value);
+						var intans;
+						if (document.MathGame.radOperation[0].checked) 
+						intans = num1 + num2;
+						else if	(document.MathGame.radOperation[1].checked) 
+						intans = num1 - num2;
+						else if	(document.MathGame.radOperation[2].checked) 
+						intans = num1 * num2;
+						else if (document.MathGame.radOperation[3].checked) 
+						intans = num1 / num2;
+	
+						if(intguess==intans)
+							{
+							intcorrect++;
+							document.MathGame.txtRight.value=intcorrect;
+							alert('You are correct!')
+							}
+						else 
+						{
+							if(intguess!=intans) 
+							{
+							intincorrect++;
+							document.MathGame.txtWrong.value=intincorrect;
+							alert('Sorry, you are wrong. The correct answer is: ' + intans)
+							}
+						}
+						document.MathGame.txtguess.value="";
+						SetUpGame();
+					}
+
+</script>
+
+</head>
+<body onload="SetUpGame()">
+<form name="MathGame">
+<fieldset style = "width = 300">
+	<h2>MathGame<h2><br>
+	<input type="text" name="txta" size=2 maxlength=2 style="font-size: 36pt; text-align: center" >
+	<span id="operator" style="font-size: 36pt; text-align: center">+</span>
+	<input type="text" name="txtb" size=2 maxlength=2 style="font-size: 36pt; text-align: center">
+	<span style="font-size: 36pt; text-align: center" >=</span>
+	<input type="text" name="txtguess" size=2 maxlength=2 value="" style="font-size: 36pt; text-align: center">
+	<input type="button" value="Check" onclick="CheckIt()">
+	<br><br>
+	
+<table>
+	<tr>
+		<td>
+			<th>
+				<fieldset style="width: 150px; background-color: lightblue" align= "left">
+				<h4>Game Difficulty<h4><br>
+				<input type="radio" name="radDifficulty" value="1" checked onclick="SetUpGame()">Grade 1 (1-10)<br>
+				<input type="radio" name="radDifficulty" value="2" onclick="SetUpGame()">Grade 2 (11-100)<br>
+				</fieldset>
+			</th>
+			
+			<th>
+				<fieldset style="width: 150px; background-color: lightblue" align="left">
+				<h4>Math Operation<h4><br>
+				<input type="radio" name="radOperation" value="+" checked onclick="SetUpGame()">Addition<br>
+				<input type="radio" name="radOperation" value="-" onclick="SetUpGame()">Subtraction<br>
+				<input type="radio" name="radOperation" value="*" onclick="SetUpGame()">Multiplication<br>
+				<input type="radio" name="radOperation" value="/" onclick="SetUpGame()">Division
+				</fieldset>
+			</th>
+		
+			<th>
+				<input type="checkbox" name"chkScore" value="Show Score" checked>Show Score
+				<fieldset style="width: 150px; background-color: lightblue" align="left">			
+				<h4>Your Score<h4><br>
+				Correct:<input type="text" name="txtRight" size=3 value="" ></br> 
+				Incorrect:<input type="text" name="txtWrong" size=3 value="" >
+				</fieldset>
+			</th>
+		</td>
+	</tr>
+</table>
+</fieldset>
+</form>
+<p>Return to <a href="C:\Users\admin\Desktop\NO\TOSA Google Drive\MATC Semester 1 (Spring 2014)\HTML5 and JavaScript_\JavaScript Final Project\JavaScript Final Project.html">ITDEV160 Final Project Home Page</a>.</p>
+</body>
+</html>

@@ -1,0 +1,49 @@
+
+<!-- saved from url=(0065)file:///C:/Users/admin/Desktop/Javascript/IT160/HTML%20Forms.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>HTML FORMS</title>
+		<script>
+			function calculate() {
+			var qty, lot, box, left;
+			qty=parseInt(document.Boxlotcalc.txtqty.value);
+			lot=parseInt(document.Boxlotcalc.txtlot.value);
+			box=parseInt(qty/lot);
+			left=parseInt(qty-(box*lot));
+			document.Boxlotcalc.txtbox.value=box;
+			document.Boxlotcalc.txtleft.value=left;
+			}			
+			
+			function btnclear() {
+			document.Boxlotcalc.txtqty.value="";
+			document.Boxlotcalc.txtlot.value="";
+			document.Boxlotcalc.txtbox.value="";
+			document.Boxlotcalc.txtleft.value="";
+			}
+			
+		</script>
+		</head>
+		<body>
+			<form name="Boxlotcalc">
+				<h1>Box Lot Calculator</h1><table bgcolor="cyan">
+					<tbody><tr>
+						<td>Qty :</td>
+						<td><input type="text" name="txtqty" value=""></td>
+					</tr>
+					<tr>
+						<td>Lot Size :</td>
+						<td><input type="text" name="txtlot" value=""></td>
+					</tr>
+					<tr>
+						<td>Boxes :</td>
+						<td><input type="text" name="txtbox" value=""></td>
+					</tr>
+					<tr>
+						<td>Qty Left :</td>
+						<td><input type="text" name="txtleft" value=""></td>
+					</tr>
+					</tbody></table>
+					<input type="button" value="Calculate" onclick="calculate();">
+					<input type="button" value="Clear" onclick="btnclear();">
+			</form>			
+		</body>
+</html>

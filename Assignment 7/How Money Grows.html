@@ -1,0 +1,93 @@
+<html>
+<head><title>How Money Grows</title>
+<style>
+.numeric {text-align: right;}
+</style>
+<script language="javascript"> function moneyGrows()
+{
+  var eleId;
+  var eleDat;
+  var principalAmount=ParseInt(document.form1.txtPrincipal.value);           
+  var interestRate=ParseInt(document.form1.txtrate.value); 
+  var numberOfTerms=ParseInt(document.form1.txtTerm.value);
+}  
+  
+  function amortizationTable(txtTerm)
+  {
+  document.write("<td><table border="+"1"+" id='headTab'><tr><td id='numYears'>Year</td><td id='inter'>Interest</td><td id='Prin'>Principal</td></tr>");
+  var tagNam;
+  for(var i=0;i<=txtTerm;i++) {
+    loopNum=i;
+    tagNam="n"+loopNum.toString(10);
+    document.write("<tr><td id=tagNam>"+i+"</td>");
+    tagNam="in"+loopNum.toString(10);
+    document.write("<td id="+tagNam+"></td>");
+    tagNam="p"+loopNum.toString(10);
+    document.write("<td id="+tagNam+"></td></tr>");    
+  }
+  document.write("</table></td></tr></table>");
+  displayTableField();
+  amortizePayments(txtAmount, txtRate, txtTerm);
+  return;
+  }
+  
+  function amortizePayments(txtAmount, txtRate, txtTerm)
+  {
+  txtRate = (txtRate / 100)/ 12;
+  for (var i = 0; i <= txtRate; i++)
+  {
+  Principal = (Interest + Principal);
+  Interest = (principalAmount * txtRate);  
+  
+	tagNam="n"+loopNum.toString(10);
+    displayTableField(tagNam,numYears);
+    tagNam="in"+loopNum.toString(10);
+    displayTableField(tagNam,inter);
+    tagNam="p"+loopNum.toString(10);
+    displayTableField(tagNam,Prin);
+  
+  return;
+  }
+  function displayTableField(eleId,eleDat) {
+  document.getElementById(eleId).innerHTML=eleDat;
+  return;
+  }
+  
+</script>
+</head>
+<body>
+<form name="frm1">
+<table>
+<tr>
+<td>Principal</td>
+<td>Interest Rate</td>
+<td>Term</td>
+</tr>
+<tr>
+<td><input type="text" name="txtPrincipal"
+value="" size="10 maxlength="10"></td>
+<td><input type="text" name="txtRate"
+value="" size="10 maxlength="10"></td>
+<td><input type="text" name="txtTerm"
+value="" size="10 maxlength="10"></td>
+</tr>
+</table>
+
+<tr><td><input type="button" value="Calculate" onclick="moneyGrows()"></td>
+
+</form>
+<table border id="emptable" width="310px">
+<tr>
+<td width="40%"><b>Year</b></td>
+<td width="30%"><b>Interest Rate</b></td>
+<td width="30%" class="numeric"><b>Principal</b></td>
+</tr>
+<tr>
+<td></td><td></td><td class="numeric"></td>
+</tr>
+<tr>
+<td></td><td></td><td class="numeric"></td>
+</tr>
+</table>
+</body>
+</html>

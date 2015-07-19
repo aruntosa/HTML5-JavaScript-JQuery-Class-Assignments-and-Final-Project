@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html>
+<head><title>How Money Grows</title>
+
+<script>
+function moneyGrows()
+{  
+	
+
+  var principalAmount=parseFloat(document.frm1.txtPrincipal.value);           
+  var interestRate=parseFloat(document.frm1.txtRate.value); 
+  var numberOfTerms=parseFloat(document.frm1.txtTerm.value);
+  var cumulativeInterest, totVal, i =0;
+  
+  var startingRow  = document.createElement("tr");
+
+	var col1 = document.createElement("td");
+	var col2 = document.createElement("td");
+	var col3 = document.createElement("td");
+
+	var tn1 = document.createTextNode("0");
+	var tn2 = document.createTextNode(interestRate);
+	var tn3 = document.createTextNode(principalAmount);
+
+	col1.appendChild(tn1);
+	col2.appendChild(tn2);
+	col3.appendChild(tn3);
+
+	startingRow.appendChild(col1);
+	startingRow.appendChild(col2);
+	startingRow.appendChild(col3);
+
+	document.getElementById("myTable").appendChild(startingRow);
+	
+	for ( i=1; i<=numberOfTerms; i++ )
+	{
+	cumulativeInterest = Math.round((principalAmount * interestRate)*100)/100;
+	totVal = Math.round((principalAmount + cumulativeInterest)*100)/100;
+	principalAmount = totVal;
+	
+	var r  = document.createElement("tr");
+
+	var col4 = document.createElement("td");
+	var col5 = document.createElement("td");
+	var col6 = document.createElement("td");
+
+	var tn4 = document.createTextNode(i);
+	var tn5 = document.createTextNode(cumulativeInterest);
+	var tn6 = document.createTextNode(totVal);
+
+	col4.appendChild(tn4);
+	col5.appendChild(tn5);
+	col6.appendChild(tn6);
+
+	r.appendChild(col4);
+	r.appendChild(col5);
+	r.appendChild(col6);
+
+	document.getElementById("myTable").appendChild(r);
+	}
+}
+
+function moneyClear() 
+{
+document.frm1.txtPrincipal.value = "";
+document.frm1.txtRate.value = "";
+document.frm1.txtTerm.value = "";
+}
+
+function clearTable()
+{
+	var oTable=document.getElementById("myTable"); 
+	while(oTable.rows.length>1) 
+    oTable.deleteRow(oTable.rows.length-1); 
+}
+</script>
+
+</head>
+<body border = 500px; bgcolor = navyblue>
+<caption><b>How Your Money Grows</b></caption>
+<form name="frm1">
+<table>
+<caption><b></b></caption>
+<br></br>
+<tr>
+<td>Principal</td>
+<td>Interest Rate</td>
+<td>Term</td>
+</tr>
+<tr>
+<td><input type="text" name="txtPrincipal"
+value="100" size="10 maxlength="10"></td>
+<td><input type="text" name="txtRate"
+value=".06" size="10 maxlength="10"></td>
+<td><input type="text" name="txtTerm"
+value="5" size="10 maxlength="10"></td>
+</tr>
+</table>
+<br></br>
+
+<tr><td><input type="button" value="Calculate" onclick="moneyGrows()"></td>
+	<td><input type="button" value="Clear" onclick="moneyClear()"></td>	
+<br></br>
+</form>
+<table border id="myTable" width="310px">
+<tr>
+<td width="40%"><b>Year</b></td>
+<td width="30%"><b>Interest</b></td>
+<td width="30%" class="numeric"><b>Principal</b></td>
+</tr>
+</table>
+<br></br>
+<input type="button" name="clear" value="Clear Table" onclick="clearTable()">
+</body>
+<p>Return to <a href="C:\Users\admin\Desktop\NO\TOSA Google Drive\MATC Semester 1 (Spring 2014)\HTML5 and JavaScript_\JavaScript Final Project\JavaScript Final Project.html">ITDEV160 Final Project Home Page</a>.</p> 
+</html>

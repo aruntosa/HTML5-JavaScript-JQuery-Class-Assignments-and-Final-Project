@@ -1,0 +1,149 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>Coloring Game</title>
+<h1>Coloring Game</h1>
+<h2>Choose the Color and Pattern<h2/>
+<script>
+
+function colorit() 
+{
+    var objtable = document.getElementById("board");
+	var bgndcolor = selectColor();
+	var pattern = selectPattern();
+	
+	//white();
+	
+	if (pattern == 0) 
+	{
+	objtable.cells[2].style.backgroundColor = bgndcolor;
+	objtable.cells[7].style.backgroundColor = bgndcolor;
+	objtable.cells[10].style.backgroundColor = bgndcolor;
+	objtable.cells[11].style.backgroundColor = bgndcolor;
+	objtable.cells[12].style.backgroundColor = bgndcolor;
+	objtable.cells[13].style.backgroundColor = bgndcolor;
+	objtable.cells[14].style.backgroundColor = bgndcolor;
+	objtable.cells[17].style.backgroundColor = bgndcolor;
+	objtable.cells[22].style.backgroundColor = bgndcolor;
+	}
+
+	else if (pattern == 1) 
+	{
+	objtable.cells[0].style.backgroundColor = bgndcolor;
+	objtable.cells[4].style.backgroundColor = bgndcolor;
+	objtable.cells[6].style.backgroundColor = bgndcolor;
+	objtable.cells[8].style.backgroundColor = bgndcolor;
+	objtable.cells[12].style.backgroundColor = bgndcolor;
+	objtable.cells[16].style.backgroundColor = bgndcolor;
+	objtable.cells[18].style.backgroundColor = bgndcolor;
+	objtable.cells[20].style.backgroundColor = bgndcolor;
+	objtable.cells[24].style.backgroundColor = bgndcolor;
+	}
+
+	else if (pattern == 2) 
+	{
+	objtable.cells[0].style.backgroundColor = bgndcolor;
+	objtable.cells[4].style.backgroundColor = bgndcolor;
+	objtable.cells[5].style.backgroundColor = bgndcolor;
+	objtable.cells[9].style.backgroundColor = bgndcolor;
+	objtable.cells[10].style.backgroundColor = bgndcolor;
+	objtable.cells[11].style.backgroundColor = bgndcolor;
+	objtable.cells[12].style.backgroundColor = bgndcolor;
+	objtable.cells[13].style.backgroundColor = bgndcolor;
+	objtable.cells[14].style.backgroundColor = bgndcolor;
+	objtable.cells[15].style.backgroundColor = bgndcolor;
+	objtable.cells[19].style.backgroundColor = bgndcolor;
+	objtable.cells[20].style.backgroundColor = bgndcolor;
+	objtable.cells[24].style.backgroundColor = bgndcolor;
+	}
+}
+
+function clear()
+{
+	var objtable = document.getElementById("board");
+	var i;
+	for 	(i=0; i < objtable.cells.length; i++)
+		{
+		objtable.cells[i].style.backgroundColor = "white";
+		}
+}
+
+function selectColor() 
+{
+	var bgndcolor = document.getElementById("listColor").value;
+	return bgndcolor;
+}
+
+function selectPattern() 
+{
+	var pattern;
+	if (document.frmColorIt.radGrp1[0].checked)
+	{
+	pattern = 0;
+	}
+	else if (document.frmColorIt.radGrp1[1].checked)
+	{
+	pattern = 1;
+	}
+	else if (document.frmColorIt.radGrp1[2].checked)
+	{
+	pattern = 2;
+	}	
+	return pattern;
+}
+
+</script>
+
+</head>
+<body>
+<form name="frmColorIt">
+  <style>
+   table#board td 
+   {
+    width: 50px ;
+    height: 50px ;
+    border: 1px solid black ;
+   }
+  </style>
+  
+  <table id="board" border="1">
+    <script>
+    var Rows = 5 ;
+    var Cols = 5 ;
+    
+    for (var i = 0; i < Rows; ++i) {
+     document.writeln("<tr>") ;
+     for (var j = 0; j < Cols; ++j) {
+       document.writeln("<td>") ;
+	   document.writeln("</td>") ;
+     }
+     document.writeln("</tr>") ;
+    }
+    </script>
+  </table>  
+</br>
+</br>
+<h4>Choose the Color</h4>
+  <select id="listColor" size="5">Select Color:
+	<option value="red" selected>Red</option>
+	<option value="blue">Blue</option>
+	<option value="yellow">Yellow</option>
+	<option value="green">Green</option>	
+  	<option value="orange">Orange</option>
+  </select>
+</br>
+</br>
+<h4>Choose the Pattern</h4>
+  <input type="radio" name="radGrp1" value=0 checked>Plus Sign</br>
+  <input type="radio" name="radGrp1" value=1>Letter X</br>
+  <input type="radio" name="radGrp1" value=2>Letter H
+</br>
+</br>
+  <input value="Color" onclick="colorit()" type="button">
+  <input value="Clear" onclick="clear()" type="button">
+</br>
+</br> 
+<p>Return to <a href="C:\Users\admin\Desktop\JavaScript Final Project\JavaScript Final Project.html">ITDEV160 Final Project Home Page</a>.</p> 
+</body>
+</html>
+
